@@ -16,8 +16,8 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         container('docker') {  
-          sh "docker build -t ancitik/promo-app:dev ."  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
-          sh "docker push vividlukeancitikloresch/promo-app:dev"        // which is just connecting to the host docker deaemon
+          sh "docker build -t ancitik/jenkins-k8s-demo:dev ."  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
+          sh "docker push ancitik/jenkins-k8s-demo:dev"        // which is just connecting to the host docker deaemon
         }
       }
     }
