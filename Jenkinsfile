@@ -20,8 +20,11 @@ pipeline {
             credentialsId: 'dockerhub',
             usernameVariable: 'DOCKER_HUB_USER',
             passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
-              sh "docker build -t ancitik/jenkins-k8s-demo:dev ."  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
-              sh "docker push ancitik/jenkins-k8s-demo:dev"        // which is just connecting to the host docker deaemon
+              sh """
+                docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
+                docker build -t ancitik/jenkins-k8s-demo:dev .  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
+                docker push ancitik/jenkins-k8s-demo:dev        // which is just connecting to the host docker deaemon
+              """
           }
         }
       }
