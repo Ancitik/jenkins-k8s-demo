@@ -22,8 +22,8 @@ pipeline {
             passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
               sh """
                 docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-                docker build -t harbor.kube.pic.berger-levrault.com/k8s-jenkins-demo/helloworld-app:latest .
-                docker push harbor.kube.pic.berger-levrault.com/k8s-jenkins-demo/helloworld-app:latest
+                docker build -t harbor.kube.pic.local/k8s-jenkins-demo/helloworld-app:latest .
+                docker push harbor.kube.pic.local/k8s-jenkins-demo/helloworld-app:latest
               """
         }
       }
